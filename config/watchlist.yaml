@@ -5,11 +5,9 @@ a_share:
     name: "平安银行"
   - code: "300750"
     name: "宁德时代"
+  - code: "601318"
+    name: "中国平安"
+  - code: "000858"
+    name: "五粮液"
 
-us_share:
-  - code: "AAPL"
-    name: "苹果"
-  - code: "MSFT"
-    name: "微软"
-  - code: "NVDA"
-    name: "英伟达"
+us_share: []

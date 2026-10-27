@@ -18,8 +18,7 @@ with st.sidebar:
     st.header("自选股")
     cfg = load_watchlist()
 
-    market = st.radio("市场", ["A股", "美股"])
-    stock_list = cfg["a_share"] if market == "A股" else cfg["us_share"]
+    stock_list = cfg["a_share"]
     options = {f"{s['name']} ({s['code']})": s["code"] for s in stock_list}
     label = st.selectbox("选择股票", list(options.keys()))
     code = options[label]
