@@ -1,0 +1,15 @@
+a_share:
+  - code: "600519"
+    name: "贵州茅台"
+  - code: "000001"
+    name: "平安银行"
+  - code: "300750"
+    name: "宁德时代"
+
+us_share:
+  - code: "AAPL"
+    name: "苹果"
+  - code: "MSFT"
+    name: "微软"
+  - code: "NVDA"
+    name: "英伟达"
