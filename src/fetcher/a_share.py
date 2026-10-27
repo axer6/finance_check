@@ -2,22 +2,16 @@ import akshare as ak
 import pandas as pd
 
 
-def fetch_a_share_daily(code: str, start_date: str = "20200101", end_date: str = None) -> pd.DataFrame:
-    df = ak.stock_zh_a_hist(
-        symbol=code,
-        period="daily",
-        start_date=start_date,
-        end_date=end_date or "",
-        adjust="qfq",
-    )
-    df = df.rename(columns={
-        "日期": "date",
-        "开盘": "open",
-        "最高": "high",
-        "最低": "low",
-        "收盘": "close",
-        "成交量": "volume",
-    })
+def _symbol_prefix(code: str) -> str:
+    if code.startswith("6"):
+        return f"sh{code}"
+    return f"sz{code}"
+
+
+def fetch_a_share_daily(code: str, start_date: str = "2020-01-01") -> pd.DataFrame:
+    symbol = _symbol_prefix(code)
+    df = ak.stock_zh_a_daily(symbol=symbol, start_date=start_date, adjust="qfq")
+    df = df.reset_index() if "date" not in df.columns else df
     df["date"] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%d")
     df["code"] = code
     df["market"] = "A"
